@@ -33,13 +33,20 @@ RUN apk add --no-cache --virtual .build-deps \
 		bzip2-dev \
 		zlib-dev \
         autoconf automake libtool curl perl nodejs \
-    python3 openssl-dev \
-    ;
+        python3 openssl-dev \
+        ;
 
 WORKDIR /data/git/python-wasm-sdk
 COPY . .
 COPY . /opt/python-wasm-sdk
-WORKDIR /data/git/python-wasm-sdk/python-wasm-sdk
-RUN ./python-wasm-sdk.sh
+WORKDIR /opt/python-wasm-sdk
+#RUN mkdir -p /opt/python-wasm-sdk/src
+#RUN wget https://www.python.org/ftp/python/3.13.1/Python-3.13.1.tar.xz -O/tmp/python.tar.xz
+#RUN tar xfp /tmp/python.tar.xz -C $CONTAINER_PATH/opt/python-wasm-sdk/src
+RUN git clone --no-tags --depth 1 --single-branch --branch main https://github.com/emscripten-core/emsdk.git
+WORKDIR /opt/python-wasm-sdk/emsdk
+RUN ./emsdk install latest
+RUN ./emsdk activate latest
+#RUN ./python-wasm-sdk.sh
 
 
