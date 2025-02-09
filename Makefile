@@ -11,3 +11,5 @@ build3:
 build4:
 	podman build . --layers=false -f Dockerfile4 -t portable-sdk4
 
+build5:
+	podman build . --layers=false -f Dockerfile5 -t portable-sdk5

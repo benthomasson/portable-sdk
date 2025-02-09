@@ -15,13 +15,16 @@ RUN apt-get update && \
     python3-venv gcc libpython3-dev iputils-ping libcap2 libunistring2 libidn2-0 libnettle6 \
     git xz-utils wget libffi-dev tar file lz4 git patch bison flex findutils binutils coreutils \
     libbz2-dev libncursesw5-dev libgdbm-dev liblzma-dev libsqlite3-dev tk-dev uuid-dev libreadline-dev \
-    clang libssl-dev curl
+    clang libssl-dev curl unzip autoconf automake libtool perl nodejs linux-libc-dev libreadline-dev \
+    libsqlite3-dev libbz2-dev zlib1g-dev
+
 
 
 WORKDIR /data/git/python-wasm-sdk
 COPY . .
 COPY . /opt/python-wasm-sdk
 WORKDIR /opt/python-wasm-sdk
+RUN ./autoconf_install.sh
 #RUN mkdir -p /opt/python-wasm-sdk/src
 #RUN wget https://www.python.org/ftp/python/3.13.1/Python-3.13.1.tar.xz -O/tmp/python.tar.xz
 #RUN tar xfp /tmp/python.tar.xz -C $CONTAINER_PATH/opt/python-wasm-sdk/src

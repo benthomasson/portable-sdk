@@ -34,6 +34,8 @@ RUN apk add --no-cache --virtual .build-deps \
 		zlib-dev \
         autoconf automake libtool curl perl nodejs \
         python3 openssl-dev \
+        libc6-compat \
+        gcompat libstdc++ \
         ;
 
 WORKDIR /data/git/python-wasm-sdk

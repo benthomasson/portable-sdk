@@ -1,0 +1,4 @@
+FROM portable-sdk4
+WORKDIR /data/git/python-wasm-sdk/python-wasm-sdk
+RUN ./python-wasm-sdk.sh
+RUN touch /opt/python-wasm-sdk/dev
