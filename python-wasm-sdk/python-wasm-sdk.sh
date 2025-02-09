@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 reset
 
 # TODO: check how dbg tools work with default settings
