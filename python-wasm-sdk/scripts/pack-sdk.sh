@@ -21,8 +21,8 @@ tar -cpPR \
     ${SDKROOT}/native \
     ${SDKROOT}/bun \
      > /tmp/sdk/python${PYBUILD}-${TAG}-sdk-${CIVER}.tar
-    lz4 -c --favor-decSpeed --best /tmp/sdk/python${PYBUILD}-${TAG}-sdk-${CIVER}.tar \
+    lz4 -c /tmp/sdk/python${PYBUILD}-${TAG}-sdk-${CIVER}.tar \
      > /tmp/sdk/python${PYBUILD}-${TAG}-sdk-${CIVER}.tar.lz4
-    rm /tmp/sdk/python${PYBUILD}-${TAG}-sdk-${CIVER}.tar
+    #rm /tmp/sdk/python${PYBUILD}-${TAG}-sdk-${CIVER}.tar
 echo "done"  1>&2
 popd
