@@ -14,16 +14,13 @@ SDKROOT = Path(os.environ.get("SDKROOT", "/opt/python-wasm-sdk"))
 EMSDK = Path(os.environ.get("EMSDK", "/opt/python-wasm-sdk/emsdk"))
 PREFIX = Path(os.environ.get("PREFIX", "/opt/python-wasm-sdk/devices/emsdk/usr"))
 
-print(f"{sys.argv=}")
 sys.argv.pop(0)
-print(f"{sys.argv=}")
 
 # point to emscripten cc
 if not sys.argv[0].endswith(".py"):
     EXEC = f"{EMSDK}/upstream/emscripten/emcc.py"
 else:
     EXEC = sys.argv.pop(0)
-print(f"{EXEC=}")
 
 
 def env(k, default):
@@ -327,7 +324,6 @@ os.environ.pop("_EMCC_CCACHE", "")
 
 
 final = [EXEC]
-print(f"{final=}")
 
 # a.out test misses fpic
 if CONFIGURE and len(out) == 1:
@@ -495,5 +491,4 @@ if EMCC_TRACE:
 else:
     sys.argv.extend(final)
 
-print(f"{EXEC=}")
 exec(open(EXEC, "r").read(), globals(), globals())
